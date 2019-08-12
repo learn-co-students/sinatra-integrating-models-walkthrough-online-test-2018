@@ -8,7 +8,7 @@ class TextAnalyzer
   end
 
   def count_of_words
-    words = text.split(" ")
+    words = text.split(' ')
     words.count
   end
 
@@ -21,9 +21,9 @@ class TextAnalyzer
   end
 
   def most_used_letter
-    no_spaces = text.gsub(" ", "")
-    letters = no_spaces.split("")
-    histogram = Hash[*letters.group_by{ |v| v }.flat_map{ |k, v| [k, v.size] }]
-    histogram.max_by{ |k, v| v }
+    no_spaces = text.gsub(' ', '')
+    letters = no_spaces.split('')
+    histogram = letters.group_by { |v| v }.transform_values(&:size)
+    histogram.max_by { |k, v| v }
   end
 end
